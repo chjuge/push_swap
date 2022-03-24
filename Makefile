@@ -1,16 +1,18 @@
 DIR		= 	src
 
-# SRCS	=	$(DIR)/pipex.c  \
-# 			$(DIR)/utils.c	\
-# 			$(DIR)/try_open.c \
-# 			$(DIR)/ft_split.c \
-# 			$(DIR)/fill_cmd_line.c \
-# 			$(DIR)/child_and_parent.c \
-# 			$(DIR)/find_count_of_lines.c \
-# 			$(DIR)/get_full_path.c \
-# 			$(DIR)/parse_path.c \
-# 			$(DIR)/ft_strjoin.c \
-# 			$(DIR)/free_all.c
+SRCS	=	$(DIR)/bubble_sort.c  \
+			$(DIR)/check_input.c	\
+			$(DIR)/checks.c \
+			$(DIR)/ft_atoi.c \
+			$(DIR)/ft_split.c \
+			$(DIR)/main.c \
+			$(DIR)/parse_args.c \
+			$(DIR)/transform_args.c \
+			$(DIR)/utils_lst.c \
+			$(DIR)/utils1.c \
+			$(DIR)/utils2.c \
+			$(DIR)/deep_free.c \
+			$(DIR)/show.c
 
 OBJS	= 	$(SRCS:.c=.o)
 

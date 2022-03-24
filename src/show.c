@@ -1,61 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checks.c                                           :+:      :+:    :+:   */
+/*   show.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 17:00:18 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/24 17:29:41 by mproveme         ###   ########.fr       */
+/*   Created: 2022/03/24 17:36:52 by mproveme          #+#    #+#             */
+/*   Updated: 2022/03/24 18:44:07 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int	check_for_doubles(long *arr, int len)
+void	show_stack(t_elem **head, int len)
 {
-	int	i;
-	int j;
-
-	i = 0;
-	while (i < len)
+	t_elem *tmp = *head;
+	// printf("tmp:	%p\n", tmp);
+	for (int i = 0; i < len; i++)
 	{
-		j = 0;
-		while (j < i)
-		{
-			if (arr[i] == arr[j])
-				return (0);
-			j++;
-		}
-		i++;
+		show_elem(tmp);
+		tmp = tmp->next;
 	}
-	return (1);
 }
 
-int	check_for_max_min_int(long *arr, int len)
+void show_lines(char **strs, int lines)
 {
 	int	i;
 
 	i = 0;
-	while (i < len)
+	while (i < lines)
 	{
-		if (arr[i] > INT32_MAX || arr[i] < INT32_MIN)
-			return (0);
+		printf("-->	%s	<--\n", strs[i]);
 		i++;
 	}
-	return (1);
 }
 
-int	check_is_sorted(int *arr, int len)
+void show_array(long *arr, int len)
 {
 	int	i;
 
-	i = 1;
+	i = 0;
 	while (i < len)
 	{
-		if (arr[i] < arr[i-1])
-			return (0);
+		printf("elem:	|	%d	|\n", (int)arr[i]);
 		i++;
 	}
-	return (1);
+}
+
+void	show_elem(t_elem *el)
+{
+	printf("value:	%d	ind:	%d\n", el->value, el->index);
 }

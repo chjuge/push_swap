@@ -6,13 +6,13 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:55:39 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/24 15:19:47 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/24 18:17:23 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-static int	find_lines_count(char **strs)
+int	find_lines_count(char **strs)
 {
 	int i;
 
@@ -51,26 +51,13 @@ static char **adjasting_input(int *len, int argc, char **argv)
 	}
 	else
 	{
-		strs = ft_split(argv[1], " ");
+		strs = ft_split(argv[1], ' ');
 		*len = find_lines_count(strs);
 	}
 	return (strs);
 }
 
-void	deep_free(char **strs)
-{
-	int	lines;
-	int	i;
 
-	lines = find_lines_count(strs);
-	i = 0;
-	while (i < lines)
-	{
-		free(strs[i]);
-		i++;
-	}
-	free(strs);
-}
 
 int	parse_args(int argc, char **argv)
 {
@@ -80,21 +67,32 @@ int	parse_args(int argc, char **argv)
 	char		**strs;
 	t_elem		*a;
 
+	a = 0;
 	strs = adjasting_input(&len, argc, argv);
 	if (!check_input(len, strs))
 	{
-		ft_putstr_fd("Error (wrong input)", 2);
+		ft_putstr_fd("Error (wrong input)\n", 2);
 		return (0);
 	}
+	// show_lines(strs, len);
 	arr1 = transform_args(strs, len);
+	// show_array(arr1, len);
 	if (!check_for_doubles(arr1, len) ||
 		!check_for_max_min_int(arr1, len))
 	{
 		free(arr1);
-		ft_putstr_fd("Error", 2);
+		ft_putstr_fd("Error\n", 2);
 		return (0);
 	}
 	arr2 = bubble_sort(arr1, len);
-	fill_stack(a, arr1, len);
+	// show_array(arr2, len);
+	a = 0;
+	a = fill_stack(a, arr1, len);
+	// show_elem(a);
+	// show_elem(a->next);
+	// show_elem(a->next->next);
+	// show_elem(a->next->next->next);
+	// printf("tut?\n");
+	show_stack(&a, len);
 	return (1);
 }

@@ -1,61 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checks.c                                           :+:      :+:    :+:   */
+/*   deep_free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 17:00:18 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/24 17:29:41 by mproveme         ###   ########.fr       */
+/*   Created: 2022/03/24 17:31:50 by mproveme          #+#    #+#             */
+/*   Updated: 2022/03/24 18:42:41 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int	check_for_doubles(long *arr, int len)
+void	deep_free(char **strs)
 {
+	int	lines;
 	int	i;
-	int j;
 
+	lines = find_lines_count(strs);
 	i = 0;
-	while (i < len)
+	while (i < lines)
 	{
-		j = 0;
-		while (j < i)
+		if (strs[i] && strs[i] != 0)
 		{
-			if (arr[i] == arr[j])
-				return (0);
-			j++;
+			// printf("free:	%s\n" , strs[i]);
+			free(strs[i]);
 		}
 		i++;
 	}
-	return (1);
-}
-
-int	check_for_max_min_int(long *arr, int len)
-{
-	int	i;
-
-	i = 0;
-	while (i < len)
-	{
-		if (arr[i] > INT32_MAX || arr[i] < INT32_MIN)
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	check_is_sorted(int *arr, int len)
-{
-	int	i;
-
-	i = 1;
-	while (i < len)
-	{
-		if (arr[i] < arr[i-1])
-			return (0);
-		i++;
-	}
-	return (1);
+	// printf("tut, lines: %d\n", lines);
+	free(strs);
 }
