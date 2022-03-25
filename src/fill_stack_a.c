@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 14:16:18 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/24 18:16:33 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/25 18:49:11 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ t_elem	*ft_lstnew(long value, int index)
 	new_el -> next = 0;
 	new_el -> prev = 0;
 	new_el -> score_a_r = -1;
-	new_el -> score_a_rr = -1;
 	new_el -> score_b_r = -1;
+	new_el -> score_ab_r = 0;
+	new_el -> score_a_rr = -1;
 	new_el -> score_b_rr = -1;
-	new_el -> score_rrr = -1;
+	new_el -> score_ab_rr = 0;
 	return (new_el);
 }
 
@@ -53,21 +54,67 @@ void ft_add_back(t_elem **lst, t_elem *new)
 	tmp->next = new;
 }
 
-t_elem	*fill_stack(t_elem *stack, long *arr, int len)
+void	add_front(t_elem **list, t_elem *new)
+{
+	t_elem *tmp;
+	t_elem *tmp_prev;
+
+	if (!list)
+	{
+		*list = new;
+		return ;
+	}
+	tmp = *list;
+	tmp_prev = tmp_prev;
+
+	tmp->prev = new;
+	tmp_prev->next = new;
+
+	new->next = tmp;
+	new->prev = tmp_prev;
+
+	*list = new;
+}
+
+t_elem	*cut_head(t_elem **head)
+{
+	t_elem *tmp;
+	t_elem *tmp_prev;
+	t_elem *tmp_next;
+
+	tmp = *head;
+	tmp_next = tmp->next;
+	tmp_prev = tmp->prev;
+
+	tmp_prev->next = tmp_next;
+	tmp_next->prev = tmp_prev;
+
+	tmp->next = 0;
+	tmp->prev = 0;
+
+	*head = tmp_next;
+
+	return (tmp);
+}
+
+void	fill_stack_a(t_elem **head_a, long *arr, int len)
 {
 	int	i;
 	t_elem	*tmp;
+	t_elem	*h;
 
 	i = 1;
-	if (!stack)
+	h = *head_a;
+	if (!h)
 	{
-		stack = ft_lstnew(arr[0], 0);
+		tmp = ft_lstnew(arr[0], 0);
+		*head_a = tmp;
 		// show_elem(stack);
 	}
 	while (i < len)
 	{
 		tmp = ft_lstnew(arr[i], i);
-		ft_add_back(&stack, tmp);
+		ft_add_back(head_a, tmp);
 		// show_elem(tmp);
 		i++;
 	}
@@ -75,6 +122,5 @@ t_elem	*fill_stack(t_elem *stack, long *arr, int len)
 	// show_elem(stack->next);
 	// show_elem(stack->next->next);
 	// show_elem(stack->next->next->next);
-	return (stack);
 }
 

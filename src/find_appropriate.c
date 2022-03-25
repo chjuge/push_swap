@@ -1,44 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmds_rotate.c                                      :+:      :+:    :+:   */
+/*   find_appropriate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/24 19:16:24 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/25 12:40:51 by mproveme         ###   ########.fr       */
+/*   Created: 2022/03/25 16:47:55 by mproveme          #+#    #+#             */
+/*   Updated: 2022/03/25 16:48:14 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-void	rotate(t_elem **head)
+t_elem	*find_appropriate(int value, t_elem **head_a)
 {
-	t_elem	*tmp;
+	t_elem	*tmp1;
+	t_elem	*tmp2;
 
-	tmp = *head;
-	tmp = tmp->next;
-	*head = tmp;
-}
-
-void	rotate_a(t_elem **head, int mode)
-{
-	if (mode)
-		write(1, "ra\n", 3);
-	rotate(head);
-}
-
-void	rotate_b(t_elem **head, int mode)
-{
-	if (mode)
-		write(1, "rb\n", 3);
-	rotate(head);
-}
-
-void	rotate_rr(t_elem **a, t_elem **b, int mode)
-{
-	if (mode)
-		write(1, "rr\n", 3);
-	rotate(a);
-	rotate(b);
+	tmp1 = *head_a;
+	tmp2 = *head_a;
+	while (value > tmp1->value && value > tmp2->value)
+		{
+			tmp1 = tmp1->next;
+			tmp2 = tmp2->prev;
+		}
+	if (value < tmp1->value)
+		return (tmp1);
+	return (tmp2);
 }

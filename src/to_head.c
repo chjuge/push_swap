@@ -1,44 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmds_rotate.c                                      :+:      :+:    :+:   */
+/*   to_head.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/24 19:16:24 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/25 12:40:51 by mproveme         ###   ########.fr       */
+/*   Created: 2022/03/25 16:45:39 by mproveme          #+#    #+#             */
+/*   Updated: 2022/03/25 16:45:49 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-void	rotate(t_elem **head)
+int	to_head_r(t_elem **elem, t_elem **head)
 {
 	t_elem	*tmp;
+	int		steps;
 
-	tmp = *head;
-	tmp = tmp->next;
-	*head = tmp;
+	tmp = *elem;
+	steps = 0;
+	while (tmp != *head)
+	{
+		tmp = tmp->prev;
+		steps++;
+	}
+	return (steps);
 }
 
-void	rotate_a(t_elem **head, int mode)
+int	to_head_rr(t_elem **elem, t_elem **head)
 {
-	if (mode)
-		write(1, "ra\n", 3);
-	rotate(head);
-}
+	t_elem	*tmp;
+	int		steps;
 
-void	rotate_b(t_elem **head, int mode)
-{
-	if (mode)
-		write(1, "rb\n", 3);
-	rotate(head);
-}
-
-void	rotate_rr(t_elem **a, t_elem **b, int mode)
-{
-	if (mode)
-		write(1, "rr\n", 3);
-	rotate(a);
-	rotate(b);
+	tmp = *elem;
+	steps = 0;
+	while (tmp != *head)
+	{
+		tmp = tmp->next;
+		steps++;
+	}
+	return (steps);
 }

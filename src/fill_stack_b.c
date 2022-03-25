@@ -1,44 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmds_rotate.c                                      :+:      :+:    :+:   */
+/*   fill_stack_b.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/24 19:16:24 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/25 12:40:51 by mproveme         ###   ########.fr       */
+/*   Created: 2022/03/25 18:50:25 by mproveme          #+#    #+#             */
+/*   Updated: 2022/03/25 19:03:19 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-void	rotate(t_elem **head)
+void	fill_stack_b(t_store *store)
 {
-	t_elem	*tmp;
+	int		cnt;
+	t_elem	**a;
+	t_elem	**b;
+	t_elem	*el;
 
-	tmp = *head;
-	tmp = tmp->next;
-	*head = tmp;
-}
-
-void	rotate_a(t_elem **head, int mode)
-{
-	if (mode)
-		write(1, "ra\n", 3);
-	rotate(head);
-}
-
-void	rotate_b(t_elem **head, int mode)
-{
-	if (mode)
-		write(1, "rb\n", 3);
-	rotate(head);
-}
-
-void	rotate_rr(t_elem **a, t_elem **b, int mode)
-{
-	if (mode)
-		write(1, "rr\n", 3);
-	rotate(a);
-	rotate(b);
+	cnt = store->count;
+	a = store->a;
+	b = store->b;
+	el = *a;
+	while (cnt > 0)
+	{
+		if (el->value == store->max ||
+			el->value == store->min ||
+			el->value == store->median)
+			rotate_a(a, 1);
+		else
+			push_b(a, b, 1);
+		cnt--;
+		el = el->next;
+	}
 }

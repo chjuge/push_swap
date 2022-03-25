@@ -1,44 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmds_rotate.c                                      :+:      :+:    :+:   */
+/*   fill_store.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/24 19:16:24 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/25 12:40:51 by mproveme         ###   ########.fr       */
+/*   Created: 2022/03/25 18:11:44 by mproveme          #+#    #+#             */
+/*   Updated: 2022/03/25 18:49:11 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-void	rotate(t_elem **head)
+t_store	fill_store(long *arr_un, long *arr_sor, int count)
 {
-	t_elem	*tmp;
+	t_store store;
 
-	tmp = *head;
-	tmp = tmp->next;
-	*head = tmp;
-}
-
-void	rotate_a(t_elem **head, int mode)
-{
-	if (mode)
-		write(1, "ra\n", 3);
-	rotate(head);
-}
-
-void	rotate_b(t_elem **head, int mode)
-{
-	if (mode)
-		write(1, "rb\n", 3);
-	rotate(head);
-}
-
-void	rotate_rr(t_elem **a, t_elem **b, int mode)
-{
-	if (mode)
-		write(1, "rr\n", 3);
-	rotate(a);
-	rotate(b);
+	store.a = 0;
+	store.b = 0;
+	store.min_score = 0;
+	fill_stack_a(store.a, arr_un, count);
+	store.count = count;
+	store.max = get_max(arr_sor, count);
+	store.min = get_min(arr_sor);
+	store.median = get_med(arr_sor, count);
+	return (store);
 }

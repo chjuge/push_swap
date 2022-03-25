@@ -1,44 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmds_rotate.c                                      :+:      :+:    :+:   */
+/*   find_max_min_med.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/24 19:16:24 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/25 12:40:51 by mproveme         ###   ########.fr       */
+/*   Created: 2022/03/25 18:15:35 by mproveme          #+#    #+#             */
+/*   Updated: 2022/03/25 18:20:29 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-void	rotate(t_elem **head)
+int	get_max(long *arr, int len)
 {
-	t_elem	*tmp;
-
-	tmp = *head;
-	tmp = tmp->next;
-	*head = tmp;
+	return (arr[len - 1]);
 }
 
-void	rotate_a(t_elem **head, int mode)
+int	get_min(long *arr)
 {
-	if (mode)
-		write(1, "ra\n", 3);
-	rotate(head);
+	return (arr[0]);
 }
 
-void	rotate_b(t_elem **head, int mode)
+int	get_med(long *arr, int len)
 {
-	if (mode)
-		write(1, "rb\n", 3);
-	rotate(head);
-}
-
-void	rotate_rr(t_elem **a, t_elem **b, int mode)
-{
-	if (mode)
-		write(1, "rr\n", 3);
-	rotate(a);
-	rotate(b);
+	return (arr[(len + 1)/2]);
 }

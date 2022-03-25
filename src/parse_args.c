@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:55:39 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/24 18:17:23 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/25 18:43:44 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,15 @@ static char **adjasting_input(int *len, int argc, char **argv)
 
 
 
-int	parse_args(int argc, char **argv)
+int	parse_args(int argc, char **argv, t_store *store)
 {
-	long int	*arr1;
-	long int	*arr2;
-	int	 		len;
 	char		**strs;
-	t_elem		*a;
+	int	 		len;
+	long int	*arr_un;
+	long int	*arr_sort;
+	// t_elem		*a;
 
-	a = 0;
+	// a = 0;
 	strs = adjasting_input(&len, argc, argv);
 	if (!check_input(len, strs))
 	{
@@ -75,24 +75,27 @@ int	parse_args(int argc, char **argv)
 		return (0);
 	}
 	// show_lines(strs, len);
-	arr1 = transform_args(strs, len);
+	arr_un = transform_args(strs, len);
 	// show_array(arr1, len);
-	if (!check_for_doubles(arr1, len) ||
-		!check_for_max_min_int(arr1, len))
+	if (!check_for_doubles(arr_un, len) ||
+		!check_for_max_min_int(arr_un, len))
 	{
-		free(arr1);
+		free(arr_un);
 		ft_putstr_fd("Error\n", 2);
 		return (0);
 	}
-	arr2 = bubble_sort(arr1, len);
+	arr_sort = bubble_sort(arr_un, len);
+	*store = fill_store(arr_un, arr_sort, len);
+	free(arr_sort);
+	free(arr_un);
 	// show_array(arr2, len);
-	a = 0;
-	a = fill_stack(a, arr1, len);
+	// a = 0;
+	// 
 	// show_elem(a);
 	// show_elem(a->next);
 	// show_elem(a->next->next);
 	// show_elem(a->next->next->next);
 	// printf("tut?\n");
-	show_stack(&a, len);
+	// show_stack(&a, len);
 	return (1);
 }
