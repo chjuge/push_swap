@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:41:51 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/26 16:42:53 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/26 20:41:30 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,18 @@ void		*ft_memcpy(void *dst, const void *src, size_t n);
 int			ft_atoi(const char *str);
 char		**ft_split(char const *s, char c);
 
+char		**deep_copy(char **strs, int len);
+
 int			check_input(int len, char **arr);
 int			parse_args(int argc, char **argv, t_store *store);
-long int	*transform_args(char **argv, int len);
+long int	*transform_args(char **argv, int len, int argc);
 int			check_for_doubles(long *arr, int len);
 int			check_for_max_min_int(long *arr, int len);
 int			check_is_sorted(t_elem **head_a, int len);
 long int	*bubble_sort(long *arr_old, int len);
 
 void		fill_stack_a(t_elem **head_a, long *arr, int len);
-void		show_stack(t_elem **head, int len);
+void		show_stack(t_elem **head);
 void		deep_free(char **strs);
 int			find_lines_count(char **strs);
 void 		show_lines(char **strs, int lines);

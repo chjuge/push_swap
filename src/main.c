@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:41:54 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/26 18:08:02 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/26 19:59:20 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ int	main(int argc, char **argv)
 	if (!parse_args(argc, argv, &store))
 		return (0);
 	// printf("successfull parsed \n");
-	show_stack(&store.a, store.count);
+	show_stack(&store.a);
 	printf("count: %d max: %d min: %d med: %d\n", store.count, store.max, store.min, store.median);
 	if (store.count == 1 || check_is_sorted(&store.a, store.count))
 	{
-		printf("sorted or count == 1\n");
-		full_free(&store);
+		// printf("sorted or count == 1\n");
+		// full_free(&store);
 		return (0);
 	}
 	// printf("store.count:	%d\n", store.count);
@@ -35,6 +35,6 @@ int	main(int argc, char **argv)
 		mini_sort(&store, 1);
 	else
 		big_sort(&store, 1);
-	full_free(&store);
+	// full_free(&store);
 	return (0);
 }

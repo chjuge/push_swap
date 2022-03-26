@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 14:16:18 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/26 17:51:07 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/26 20:20:06 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@ t_elem	*ft_lstnew(long value)
 {
 	t_elem	*new_el;
 
+	printf("in lst_new\n");
 	new_el = malloc(sizeof(t_elem));
+	printf("----> 1 <----\n"); 
 	if (!new_el)
 		return (0);
+	printf("----> 2 <----\n");
 	new_el -> value = value;
 	new_el -> next = 0;
 	new_el -> prev = 0;
@@ -28,6 +31,7 @@ t_elem	*ft_lstnew(long value)
 	new_el -> score_a_rr = -1;
 	new_el -> score_b_rr = -1;
 	new_el -> score_ab_rr = -1;
+	printf("----> 3 <----\n");
 	return (new_el);
 }
 
@@ -113,30 +117,32 @@ void	fill_stack_a(t_elem **head_a, long *arr, int len)
 
 	// printf("voshel\n");
 	i = 1;
-	// printf("1\n");
+	// printf("1!!\n");
 	if (!(*head_a))
 	{
 		// printf("head:	%p\n", head_a);
+		// printf("%d\n", (int)(arr[0]));
+		printf("--- entering lst_new1\n");
 		tmp = ft_lstnew(arr[0]);
-		// printf("2\n");
+		// printf("\n\n2!!!!!!!!!\n");
 		*head_a = tmp;
 		// printf("tmp:	%p\n", tmp);
 		// show_elem(tmp);
 	}
-	h = *head_a;
 	// printf("3\n");
+	h = *head_a;
 	while (i < len)
 	{
-	// printf("---\n");
+	printf("--- entering lst_new2\n");
 		tmp = ft_lstnew(arr[i]);
-	// printf("---\n");
+	printf("--- entering add_back\n");
 		ft_add_back(head_a, tmp);
 	// printf("---\n");
 		// show_elem(tmp);
 	// printf("---\n");
 		i++;
 	}
-	// printf("4\n");
+	printf("4\n");
 	// printf("head:	%p\n", head_a);
 	// show_elem((*head_a));
 	// show_elem(stack->next);

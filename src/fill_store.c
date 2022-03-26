@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 18:11:44 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/26 16:44:04 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/26 19:16:19 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_store	fill_store(long *arr_un, long *arr_sor, int count)
 {
 	t_store store;
 
-	// printf("padaet tut - 0\n");
+	printf("padaet tut - 0\n");
 	store.b = 0;
 	store.min_score = 0;
 	store.count = count;
@@ -24,7 +24,8 @@ t_store	fill_store(long *arr_un, long *arr_sor, int count)
 	store.min = get_min(arr_sor);
 	store.median = get_med(arr_sor, count);
 	store.a = 0;
+	printf("padaet tut - 1\n");
 	fill_stack_a(&store.a, arr_un, count);
-	// printf("head_a	%p\n", store.a);
+	printf("head_a	%p\n", store.a);
 	return (store);
 }

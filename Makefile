@@ -34,7 +34,8 @@ OBJS	= 	$(SRCS:.c=.o)
 HEAD	=	header/push_swap.h
 
 CC		=	gcc
-CFLAGS	=	-Wall -Werror -Wextra
+CFLAGS	=	-Wall -Werror -Wextra 
+# -static-libsan -g
 RM		=	rm -rf
 
 NAME	=	push_swap

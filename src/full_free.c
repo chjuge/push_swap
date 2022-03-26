@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 13:08:58 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/26 14:39:22 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/26 19:57:10 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	full_free(t_store *store)
 	t_elem **head_a;
 	t_elem	*tmp;
 
-	head_a = store->a;
+	head_a = &store->a;
 	if (!head_a || !(*head_a))
 		return ;
 	tmp = *head_a;

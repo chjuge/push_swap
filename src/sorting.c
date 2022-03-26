@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 18:45:19 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/26 18:02:02 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/26 19:12:05 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	big_sort(t_store *store, int mode)
 {
 	// printf("big sort\n");
 	fill_stack_b(store, mode);
-	show_stack(&store->a, 3);
+	show_stack(&store->a);
 	printf("--------\n");
-	show_stack(&store->b, 4);
+	show_stack(&store->b);
 	// printf("big sort ----111\n");
 	sort_3(&store->a, mode);
 	printf("--------\n");
-	show_stack(&store->a, 3);
+	show_stack(&store->a);
 	// while ((store->b) != 0)
 	// {
 	// 	find_all_scores(store->a, store->b);

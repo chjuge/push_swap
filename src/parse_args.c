@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:55:39 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/26 18:15:14 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/26 20:41:21 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	find_lines_count(char **strs)
 	return (i);
 }
 
-static char **deep_copy(char **strs, int len)
+char	**deep_copy(char **strs, int len)
 {
 	char	**new_strs;
 	int		i;
@@ -53,7 +53,8 @@ static char **adjasting_input(int *len, int argc, char **argv)
 	{
 		*len = argc - 1;
 		// show_lines(argv+1, argc-1);
-		strs = deep_copy(argv + 1, *len);
+		// strs = deep_copy(argv + 1, *len);
+		return (argv + 1);
 	}
 	else
 	{
@@ -79,12 +80,13 @@ int	parse_args(int argc, char **argv, t_store *store)
 	if (!check_input(len, strs))
 	{
 		ft_putstr_fd("Error (wrong input)\n", 2);
-		deep_free(strs);
+		if (argc == 2)
+			deep_free(strs);
 		return 0;
 	}
 	// printf("padaet tut - 2\n");
 	// show_lines(strs, len);
-	arr_un = transform_args(strs, len);
+	arr_un = transform_args(strs, len, argc);
 	// show_array(arr1, len);
 	// printf("padaet tut - 3\n");
 	if (!check_for_doubles(arr_un, len) ||
@@ -96,15 +98,18 @@ int	parse_args(int argc, char **argv, t_store *store)
 	}
 	// printf("padaet tut - 4\n");
 	arr_sort = bubble_sort(arr_un, len);
-	// printf("padaet tut - 5\n");
-	*store = fill_store(arr_un, arr_sort, len);
+
 	show_array(arr_un, len);
 	printf("--------\n");
 	show_array(arr_sort, len);
-	// printf("padaet tut - 6\n");
-	free(arr_sort);
-	// printf("padaet tut - 7\n");
+	
+	printf("padaet tut - 5\n");
+	*store = fill_store(arr_un, arr_sort, len);
+
+	printf("padaet tut - 6\n");
 	free(arr_un);
+	printf("padaet tut - 7\n");
+	free(arr_sort);
 	// printf("successfull parsed \n");
 	return (1);
 	// show_array(arr2, len);
