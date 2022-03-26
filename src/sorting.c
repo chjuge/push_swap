@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 18:45:19 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/26 14:12:54 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/26 18:02:02 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,23 @@
 
 void	big_sort(t_store *store, int mode)
 {
+	// printf("big sort\n");
 	fill_stack_b(store, mode);
-	sort_3(store->a, mode);
-	while (*(store->b) != 0)
-	{
-		find_all_scores(store->a, store->b);
-		store->min_score = find_min_score(store->b);
-		adjust_cmds(store->min_score);
-		execute_cmds(store->min_score, store->a, store->b, mode);
-		push_a(store->a, store->b, mode);
-	}
+	show_stack(&store->a, 3);
+	printf("--------\n");
+	show_stack(&store->b, 4);
+	// printf("big sort ----111\n");
+	sort_3(&store->a, mode);
+	printf("--------\n");
+	show_stack(&store->a, 3);
+	// while ((store->b) != 0)
+	// {
+	// 	find_all_scores(store->a, store->b);
+	// 	store->min_score = find_min_score(store->b);
+	// 	adjust_cmds(store->min_score);
+	// 	execute_cmds(store->min_score, store->a, store->b, mode);
+	// 	push_a(store->a, store->b, mode);
+	// }
 }
 
 void	sort_3(t_elem **head, int mode)
@@ -46,7 +53,7 @@ void	sort_3(t_elem **head, int mode)
 		rotate_rev_a(head, mode);
 	else if (x > y && x > z && y < z)
 		rotate_a(head, mode);
-	else
+	else if (x > y && x > z && y > z)
 	{
 		swap_a(head, mode);
 		rotate_rev_a(head, mode);
@@ -56,7 +63,7 @@ void	sort_3(t_elem **head, int mode)
 void	mini_sort(t_store *store, int mode)
 {
 	if (store->count == 2)
-		swap_a(store->a, mode);
+		swap_a(&store->a, mode);
 	else 
-		sort_3(store->a, mode);	
+		sort_3(&store->a, mode);	
 }

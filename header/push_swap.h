@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:41:51 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/26 14:29:57 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/26 16:42:53 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@
 # include <stdlib.h>
 
 typedef struct	s_elem {
-	t_elem	*next;
-	t_elem	*prev;
-	int		value;
-	int		score_a_r;
-	int		score_b_r;
-	int		score_ab_r;
-	int		score_a_rr;
-	int		score_b_rr;
-	int		score_ab_rr;
-	int		final_score;
-	int		route;
+	struct s_elem	*next;
+	struct s_elem	*prev;
+	int				value;
+	int				score_a_r;
+	int				score_b_r;
+	int				score_ab_r;
+	int				score_a_rr;
+	int				score_b_rr;
+	int				score_ab_rr;
+	int				final_score;
+	int				route;
 }	t_elem;
 
 typedef struct s_store {
-	t_elem	**a;
-	t_elem	**b;
+	t_elem	*a;
+	t_elem	*b;
 	t_elem	*min_score;
 	int		count;
 	int		median;
@@ -46,6 +46,8 @@ void		ft_putstr_fd(char *s, int fd);
 size_t		ft_strlen(const char *s);
 char		*ft_strdup(const char *str);
 int			ft_isdigit(int c);
+int			ft_strncmp(const char *s1, const char *s2, size_t len);
+void		*ft_memcpy(void *dst, const void *src, size_t n);
 
 int			ft_atoi(const char *str);
 char		**ft_split(char const *s, char c);
@@ -86,7 +88,7 @@ void		rotate_rev_b(t_elem **head_b, int mode);
 void		rotate_rrr(t_elem **head_a, t_elem **head_b, int mode);
 void		swap_a(t_elem **head_a, int mode);
 void		swap_b(t_elem **head_b, int mode);
-void		swap_ss(t_elem **head_a, t_elem *head_b, int mode);
+void		swap_ss(t_elem **head_a, t_elem **head_b, int mode);
 
 int			get_max(long *arr, int len);
 int			get_min(long *arr);

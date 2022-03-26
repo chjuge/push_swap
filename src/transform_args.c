@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:29:51 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/24 13:59:52 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/26 16:55:56 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ long int	*transform_args(char **strs, int count)
 	while (i < count)
 	{
 		arr[i] = ft_atoi(strs[i]);
+		// printf("strs[i]	%s	arr[i] =	%d\n", strs[i], (int)arr[i]);
 		i++;
 	}
 	deep_free(strs);

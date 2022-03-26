@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 14:42:04 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/25 19:22:18 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/26 14:53:42 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void	find_optimum(t_elem **el)
 void	find_score(t_elem **head_a, t_elem **head_b, t_elem *el)
 {
 	t_elem	*tmp_a;
-	t_elem	*el;
 
 	tmp_a = find_appropriate(el->value, head_a);
 

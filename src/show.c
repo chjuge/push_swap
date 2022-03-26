@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 17:36:52 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/24 18:44:07 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/26 16:46:51 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 void	show_stack(t_elem **head, int len)
 {
-	t_elem *tmp = *head;
+	t_elem *tmp;
+	
+	// printf("inside 1, head:	%p\n", head);
+	tmp = *head;
+	// printf("inside 2\n");
 	// printf("tmp:	%p\n", tmp);
 	for (int i = 0; i < len; i++)
 	{
@@ -49,5 +53,5 @@ void show_array(long *arr, int len)
 
 void	show_elem(t_elem *el)
 {
-	printf("value:	%d	ind:	%d\n", el->value, el->index);
+	printf("value:	%d\n", el->value);
 }

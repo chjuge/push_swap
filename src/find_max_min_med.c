@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 18:15:35 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/25 18:20:29 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/26 18:09:39 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,8 @@ int	get_min(long *arr)
 
 int	get_med(long *arr, int len)
 {
-	return (arr[(len + 1)/2]);
+	int	x;
+
+	x = len/2;
+	return (arr[x]);
 }

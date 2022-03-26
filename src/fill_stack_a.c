@@ -6,13 +6,13 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 14:16:18 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/26 14:20:03 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/26 17:51:07 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-t_elem	*ft_lstnew(long value, int index)
+t_elem	*ft_lstnew(long value)
 {
 	t_elem	*new_el;
 
@@ -35,17 +35,23 @@ void ft_add_back(t_elem **lst, t_elem *new)
 {
 	t_elem	*tmp;
 
-	if (!lst)
-		return ;
+	// if (!lst)
+	// 	return ;
+	// int n = 0;
+	// printf("--- %d ---\n", n++);
 	tmp = *lst;
-	if (!tmp->next && !tmp->prev)
+	// printf("--- %d ---\n", n++);
+	// show_elem(tmp);
+	if (!(tmp->next) && !(tmp->prev))
 	{
+		// printf("--- %d ---\n", n++);
 		tmp->next = new;
 		tmp->prev = new;
 		new->next = tmp;
 		new->prev = tmp;
 		return ;
 	}
+	// printf("--- %d ---\n", n++);
 	new->next = tmp;
 	new->prev = tmp->prev;
 	tmp->prev = new;
@@ -53,26 +59,28 @@ void ft_add_back(t_elem **lst, t_elem *new)
 	tmp->next = new;
 }
 
-void	add_front(t_elem **list, t_elem *new)
+void	add_front(t_elem **head, t_elem *new)
 {
 	t_elem *tmp;
 	t_elem *tmp_prev;
 
-	if (!(*list))
+	// static int n = 0;
+	// printf("проход %d\n", ++n);
+	if (!(*head))
 	{
-		*list = new;
+		*head = new;
+		new->next = new;
+		new->prev = new;
 		return ;
 	}
-	tmp = *list;
-	tmp_prev = tmp_prev;
-
+	tmp = *head;
+	tmp_prev = tmp->prev;
 	tmp->prev = new;
 	tmp_prev->next = new;
-
 	new->next = tmp;
 	new->prev = tmp_prev;
 
-	*list = new;
+	*head = new;
 }
 
 t_elem	*cut_head(t_elem **head)
@@ -103,22 +111,34 @@ void	fill_stack_a(t_elem **head_a, long *arr, int len)
 	t_elem	*tmp;
 	t_elem	*h;
 
+	// printf("voshel\n");
 	i = 1;
-	h = *head_a;
-	if (!h)
+	// printf("1\n");
+	if (!(*head_a))
 	{
-		tmp = ft_lstnew(arr[0], 0);
+		// printf("head:	%p\n", head_a);
+		tmp = ft_lstnew(arr[0]);
+		// printf("2\n");
 		*head_a = tmp;
-		// show_elem(stack);
+		// printf("tmp:	%p\n", tmp);
+		// show_elem(tmp);
 	}
+	h = *head_a;
+	// printf("3\n");
 	while (i < len)
 	{
-		tmp = ft_lstnew(arr[i], i);
+	// printf("---\n");
+		tmp = ft_lstnew(arr[i]);
+	// printf("---\n");
 		ft_add_back(head_a, tmp);
+	// printf("---\n");
 		// show_elem(tmp);
+	// printf("---\n");
 		i++;
 	}
-	// show_elem(stack);
+	// printf("4\n");
+	// printf("head:	%p\n", head_a);
+	// show_elem((*head_a));
 	// show_elem(stack->next);
 	// show_elem(stack->next->next);
 	// show_elem(stack->next->next->next);
