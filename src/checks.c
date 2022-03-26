@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 17:00:18 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/24 17:29:41 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/26 13:04:40 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,6 @@ int	check_for_max_min_int(long *arr, int len)
 	while (i < len)
 	{
 		if (arr[i] > INT32_MAX || arr[i] < INT32_MIN)
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	check_is_sorted(int *arr, int len)
-{
-	int	i;
-
-	i = 1;
-	while (i < len)
-	{
-		if (arr[i] < arr[i-1])
 			return (0);
 		i++;
 	}

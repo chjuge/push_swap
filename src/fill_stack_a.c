@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_lst.c                                        :+:      :+:    :+:   */
+/*   fill_stack_a.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 14:16:18 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/25 18:49:11 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/26 14:20:03 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,14 @@ t_elem	*ft_lstnew(long value, int index)
 	if (!new_el)
 		return (0);
 	new_el -> value = value;
-	new_el -> index = index;
 	new_el -> next = 0;
 	new_el -> prev = 0;
 	new_el -> score_a_r = -1;
 	new_el -> score_b_r = -1;
-	new_el -> score_ab_r = 0;
+	new_el -> score_ab_r = -1;
 	new_el -> score_a_rr = -1;
 	new_el -> score_b_rr = -1;
-	new_el -> score_ab_rr = 0;
+	new_el -> score_ab_rr = -1;
 	return (new_el);
 }
 
@@ -59,7 +58,7 @@ void	add_front(t_elem **list, t_elem *new)
 	t_elem *tmp;
 	t_elem *tmp_prev;
 
-	if (!list)
+	if (!(*list))
 	{
 		*list = new;
 		return ;
@@ -85,15 +84,16 @@ t_elem	*cut_head(t_elem **head)
 	tmp = *head;
 	tmp_next = tmp->next;
 	tmp_prev = tmp->prev;
-
-	tmp_prev->next = tmp_next;
-	tmp_next->prev = tmp_prev;
-
 	tmp->next = 0;
 	tmp->prev = 0;
-
+	if (tmp_next == tmp_prev)
+	{
+		*head = 0;
+		return (tmp);
+	}
+	tmp_prev->next = tmp_next;
+	tmp_next->prev = tmp_prev;
 	*head = tmp_next;
-
 	return (tmp);
 }
 

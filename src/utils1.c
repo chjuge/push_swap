@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:45:20 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/23 12:46:37 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/26 14:29:45 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,6 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-int	ft_strncmp(const char *s1, const char *s2, size_t len)
-{
-	unsigned char	tmp1;
-	unsigned char	tmp2;
-
-	while (len-- > 0)
-	{
-		tmp1 = (unsigned char) *s1++;
-		tmp2 = (unsigned char) *s2++;
-		if (tmp1 != tmp2)
-			return (tmp1 - tmp2);
-		if (tmp1 == '\0')
-			return (0);
-	}
-	return (0);
-}
-
 char	*ft_strdup(const char *str)
 {
 	char	*new_str;
@@ -66,19 +49,9 @@ char	*ft_strdup(const char *str)
 	return (new_str);
 }
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+int	ft_isdigit(int c)
 {
-	size_t	i;
-
-	i = 0;
-	if (n == 0)
-		return (dst);
-	if (!src && !dst)
+	if (c < '0' || c > '9')
 		return (0);
-	while (i < n)
-	{
-		((char *)(dst))[i] = ((char *)(src))[i];
-		i++;
-	}
-	return ((char *)(dst));
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 19:16:24 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/25 12:40:51 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/26 14:24:46 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,21 @@ void	rotate(t_elem **head)
 void	rotate_a(t_elem **head, int mode)
 {
 	if (mode)
-		write(1, "ra\n", 3);
+		ft_putstr_fd("ra\n", 1);
 	rotate(head);
 }
 
 void	rotate_b(t_elem **head, int mode)
 {
 	if (mode)
-		write(1, "rb\n", 3);
+		ft_putstr_fd("rb\n", 1);
 	rotate(head);
 }
 
 void	rotate_rr(t_elem **a, t_elem **b, int mode)
 {
 	if (mode)
-		write(1, "rr\n", 3);
+		ft_putstr_fd("rrr\n", 1);
 	rotate(a);
 	rotate(b);
 }

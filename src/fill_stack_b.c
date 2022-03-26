@@ -6,13 +6,13 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 18:50:25 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/25 19:03:19 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/26 14:12:41 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-void	fill_stack_b(t_store *store)
+void	fill_stack_b(t_store *store, int mode)
 {
 	int		cnt;
 	t_elem	**a;
@@ -28,9 +28,9 @@ void	fill_stack_b(t_store *store)
 		if (el->value == store->max ||
 			el->value == store->min ||
 			el->value == store->median)
-			rotate_a(a, 1);
+			rotate_a(a, mode);
 		else
-			push_b(a, b, 1);
+			push_b(a, b, mode);
 		cnt--;
 		el = el->next;
 	}

@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   full_free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 13:50:10 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/23 13:50:25 by mproveme         ###   ########.fr       */
+/*   Created: 2022/03/26 13:08:58 by mproveme          #+#    #+#             */
+/*   Updated: 2022/03/26 14:39:22 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int	ft_isdigit(int c)
+static void	delete_elem(t_elem *elem)
 {
-	if (c < '0' || c > '9')
-		return (0);
-	return (1);
+	free(elem);
+}
+
+void	full_free(t_store *store)
+{
+	t_elem **head_a;
+	t_elem	*tmp;
+
+	head_a = store->a;
+	if (!head_a || !(*head_a))
+		return ;
+	tmp = *head_a;
+	while ((*head_a) != 0)
+	{
+		tmp = cut_head(head_a);
+		delete_elem(tmp);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:55:39 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/25 18:43:44 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/26 14:04:55 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int	parse_args(int argc, char **argv, t_store *store)
 	if (!check_input(len, strs))
 	{
 		ft_putstr_fd("Error (wrong input)\n", 2);
+		deep_free(strs);
 		return (0);
 	}
 	// show_lines(strs, len);
@@ -88,6 +89,7 @@ int	parse_args(int argc, char **argv, t_store *store)
 	*store = fill_store(arr_un, arr_sort, len);
 	free(arr_sort);
 	free(arr_un);
+	return (1);
 	// show_array(arr2, len);
 	// a = 0;
 	// 
@@ -97,5 +99,4 @@ int	parse_args(int argc, char **argv, t_store *store)
 	// show_elem(a->next->next->next);
 	// printf("tut?\n");
 	// show_stack(&a, len);
-	return (1);
 }

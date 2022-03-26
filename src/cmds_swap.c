@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 18:52:14 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/25 12:42:03 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/26 14:27:10 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,24 @@ void	swap(t_elem **h)
 	*h = tmp_next;
 }
 
-void	swap_a(t_elem *stack, int mode)
+void	swap_a(t_elem **head_a, int mode)
 {
 	if (mode)
-		write(1, "sa\n", 3);
-	swap(&stack);
+		ft_putstr_fd("sa\n", 1);
+	swap(head_a);
 }
 
-void	swap_b(t_elem *stack, int mode)
+void	swap_b(t_elem **head_b, int mode)
 {
 	if (mode)
-		write(1, "sa\n", 3);
-	swap(&stack);
+		ft_putstr_fd("sb\n", 1);
+	swap(head_b);
 }
 
-void	swap_ss(t_elem *stack1, t_elem *stack2, int mode)
+void	swap_ss(t_elem **head_a, t_elem **head_b, int mode)
 {
 	if (mode)
-		write(1, "ss\n", 3);
-	swap(&stack1);
-	swap(&stack2);
+		ft_putstr_fd("ss\n", 1);
+	swap(head_a);
+	swap(head_b);
 }
