@@ -6,74 +6,100 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 14:42:04 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/27 17:17:57 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/27 19:40:15 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-static int	optim_z(int x, int y, int z)
+static int	min(int x, int y)
 {
-	while (x > 0 || y > 0)
-	{
-		z++;
-		x--;
-		y--;
-	}
-	return (x+y+z);
+	if (x < y)
+		return (x);
+	return (y);
 }
 
-static int	find_route(int a, int b, int c, int d)
+static void	adjust_by_route(t_elem *el, int x, int route)
 {
-	if (a <= b && a <= c && a <= d)
-		return (1);
-	if (b <= a && b <= c && b <= d)
-		return (2);
-	if (c <= a && c <= b && c <= d)
-		return (3);
-	return (4);
-}
-
-static int	find_final_score(t_elem *elem)
-{
-	if (elem->route == 2)
-		return (elem->score_a_r + elem->score_b_rr);
-	if (elem->route == 3)
-		return (elem->score_a_rr + elem->score_b_r);
-	if (elem->route == 1)
+	el->final_score = x;
+	el->route = route;
+	if (route == 1)
 	{
-		while (elem->score_a_r > 0 && elem->score_b_r > 0)
+		el->score_a_rr = 0;
+		el->score_b_rr = 0;
+		el->score_ab_rr = 0;
+		while (el->score_a_r > 0 && el->score_b_r > 0)
 		{
-			(elem->score_a_r)--;
-			(elem->score_b_r)--;
-			(elem->score_ab_r)++;
+			el->score_a_r--;
+			el->score_b_r--;
+			el->score_ab_r++;
 		}
-		return (elem->score_a_r + elem->score_b_r + elem->score_ab_r);
 	}
-	while (elem->score_a_rr > 0 && elem->score_b_rr > 0)
+	else if (route == 4)
 	{
-		(elem->score_a_rr)--;
-		(elem->score_b_rr)--;
-		(elem->score_ab_rr)++;
+		el->score_a_r = 0;
+		el->score_b_r = 0;
+		el->score_ab_r = 0;
+		while (el->score_a_rr > 0 && el->score_b_rr > 0)
+		{
+			el->score_a_rr--;
+			el->score_b_rr--;
+			el->score_ab_rr++;
+		}
 	}
-	return (elem->score_a_rr + elem->score_b_rr + elem->score_ab_rr);
+	else if (route == 2)
+	{
+		el->score_a_rr = 0;
+		el->score_b_r = 0;
+		el->score_ab_r = 0;
+		el->score_ab_rr = 0;
+	}
+	else
+	{
+		el->score_a_r = 0;
+		el->score_b_rr = 0;
+		el->score_ab_r = 0;
+		el->score_ab_rr = 0;
+	}
 }
 
-void	find_optimum(t_elem **el)
+int	route_calc(int a, int b)
 {
-	int	route1;
-	int	route2;
-	int	route3;
-	int	route4;
-	t_elem	*tmp;
+	int	res;
 
-	tmp = *el;
-	route2 = tmp->score_a_r + tmp->score_b_rr;
-	route3 = tmp->score_a_rr + tmp->score_b_r;
-	route1 = optim_z(tmp->score_a_r, tmp->score_b_r, 0);
-	route4 = optim_z(tmp->score_a_rr, tmp->score_b_rr, 0);
-	tmp->route = find_route(route1, route2, route3, route4);
-	tmp->final_score = find_final_score(tmp);
+	res = a + b;
+	while (a > 0 && b > 0)
+	{
+		res--;
+		a--;
+		b--;
+	}
+	return (res);
+}
+
+static void	find_route(t_elem *el)
+{
+	int	x1;	
+	int	x2;	
+	int	x3;	
+	int	x4;
+	int m;
+
+	// x1 = el->score_a_r + el->score_b_r + el->score_ab_r;
+	x1 = route_calc(el->score_a_r, el->score_b_r);
+	// x4 = el->score_a_rr + el->score_b_rr + el->score_ab_rr;
+	x4 = route_calc(el->score_a_rr, el->score_b_rr);
+	x2 = el->score_a_r + el->score_b_rr;
+	x3 = el->score_a_rr + el->score_b_r;
+	m = min(min(x1, x2),min(x3, x4));
+	if (m == x1)
+		adjust_by_route(el, x1, 1);
+	else if (m == x2)
+		adjust_by_route(el, x2, 2);
+	else if (m == x3)
+		adjust_by_route(el, x3, 3);
+	else
+		adjust_by_route(el, x4, 4);
 }
 
 void	find_score(t_elem **head_a, t_elem **head_b, t_elem *el)
@@ -87,25 +113,50 @@ void	find_score(t_elem **head_a, t_elem **head_b, t_elem *el)
 	el->score_b_rr = to_head_rr(&el, head_b);
 	el->score_ab_r = 0;
 	el->score_ab_rr = 0;
-	printf("value:	%d\n", el->value);
-	printf("appropriate: %d\n", tmp_a->value);
-	printf("a_r:	%d\n", el->score_a_r);
-	printf("b_r:	%d\n", el->score_b_r);
-	printf("a_rr:	%d\n", el->score_a_rr);
-	printf("b_rr:	%d\n", el->score_b_rr);
-	printf("ab_r:	%d\n", el->score_ab_r);
-	printf("ab_rr:	%d\n", el->score_ab_rr);
-	printf("route:	%d\n", el->route);
-	find_optimum(&el);
-	printf("----------------------\n");
-	printf("a_r:	%d\n", el->score_a_r);
-	printf("b_r:	%d\n", el->score_b_r);
-	printf("a_rr:	%d\n", el->score_a_rr);
-	printf("b_rr:	%d\n", el->score_b_rr);
-	printf("ab_r:	%d\n", el->score_ab_r);
-	printf("ab_rr:	%d\n", el->score_ab_rr);
-	printf("route:	%d\n", el->route);
-	printf("----------------------\n");
+	// printf("value:	%d\n", el->value);
+	// printf("appropriate: %d\n", tmp_a->value);
+	// printf("a_r:	%d\n", el->score_a_r);
+	// printf("b_r:	%d\n", el->score_b_r);
+	// printf("ab_r:	%d\n", el->score_ab_r);
+	// printf("a_rr:	%d\n", el->score_a_rr);
+	// printf("b_rr:	%d\n", el->score_b_rr);
+	// printf("ab_rr:	%d\n", el->score_ab_rr);
+	// printf("route:	%d\n", el->route);
+	// printf("f_score:	%d\n\n", el->final_score);
+
+	// adjust_cmds(el);	
+	// printf("value:	%d\n", el->value);
+	// printf("appropriate: %d\n", tmp_a->value);
+	// printf("a_r:		%d\n", el->score_a_r);
+	// printf("b_r:		%d\n", el->score_b_r);
+	// printf("ab_r:		%d\n", el->score_ab_r);
+	// printf("a_rr:		%d\n", el->score_a_rr);
+	// printf("b_rr:		%d\n", el->score_b_rr);
+	// printf("ab_rr:		%d\n", el->score_ab_rr);
+	// printf("route:		%d\n", el->route);
+	// printf("f_score:	%d\n\n", el->final_score);
+	find_route(el);
+
+	// printf("value:	%d\n", el->value);
+	// printf("appropriate: %d\n", tmp_a->value);
+	// printf("a_r:		%d\n", el->score_a_r);
+	// printf("b_r:		%d\n", el->score_b_r);
+	// printf("ab_r:		%d\n", el->score_ab_r);
+	// printf("a_rr:		%d\n", el->score_a_rr);
+	// printf("b_rr:		%d\n", el->score_b_rr);
+	// printf("ab_rr:		%d\n", el->score_ab_rr);
+	// printf("route:		%d\n", el->route);
+	// printf("f_score:	%d\n\n", el->final_score);
+	// find_optimum(&el);
+	// printf("----------------------\n");
+	// printf("a_r:	%d\n", el->score_a_r);
+	// printf("b_r:	%d\n", el->score_b_r);
+	// printf("a_rr:	%d\n", el->score_a_rr);
+	// printf("b_rr:	%d\n", el->score_b_rr);
+	// printf("ab_r:	%d\n", el->score_ab_r);
+	// printf("ab_rr:	%d\n", el->score_ab_rr);
+	// printf("route:	%d\n", el->route);
+	// printf("----------------------\n");
 	// show_final_score(el);
 }
 

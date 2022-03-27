@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 14:16:18 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/27 16:32:36 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/27 18:08:50 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ t_elem	*cut_head(t_elem **head)
 	tmp_prev = tmp->prev;
 	tmp->next = 0;
 	tmp->prev = 0;
-	if (tmp_next == tmp_prev)
+	if (tmp_next == tmp)
 	{
 		*head = 0;
 		return (tmp);

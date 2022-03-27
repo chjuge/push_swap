@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 16:57:22 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/25 19:29:21 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/27 18:23:58 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,16 @@ void	adjust_4(t_elem *el)
 
 void	adjust_cmds(t_elem *el)
 {
-	if (el->route == 1)
-		adjust_1(el);
-	else if (el->route == 2)
-		adjust_2(el);
-	else if (el->route == 3)
-		adjust_3(el);
-	else
-		adjust_4(el);
+	while (el->score_a_r > 0 && el->score_b_r > 0)
+	{
+		el->score_a_r--;
+		el->score_b_r--;
+		el->score_ab_r++;
+	}
+	while (el->score_a_rr > 0 && el->score_b_rr > 0)
+	{
+		el->score_a_rr--;
+		el->score_b_rr--;
+		el->score_ab_rr++;
+	}
 }

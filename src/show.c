@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 17:36:52 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/27 16:37:37 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/27 19:55:05 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,28 @@ void	show_route(t_elem *el)
 	printf("score_b_rr:	%d\n", el->score_b_rr);
 	printf("score_ab_r:	%d\n", el->score_ab_r);
 	printf("score_ab_rr:	%d\n", el->score_ab_rr);
+	printf("final score:	%d\n", el->final_score);
 	printf("srores ends -------------\n");
+}
+
+void	show_is_sorted(t_elem **head_a)
+{
+	t_elem	*tmp;
+	int		flag;
+
+	flag = 1;
+	tmp = *head_a;
+	while (tmp->next != *head_a)
+	{
+		if (tmp->value > tmp->next->value)
+		{
+			flag = 0;
+			break;
+		}
+		tmp = tmp->next;
+	}
+	if (flag)
+		ft_putstr_fd("sorted, OK!\n", 1);
+	else
+		ft_putstr_fd("not sorted, KO!\n", 1);
 }

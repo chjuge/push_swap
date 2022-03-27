@@ -6,11 +6,34 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 18:45:19 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/27 17:06:31 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/27 19:59:31 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
+
+void		final_rotates(t_elem **head_a, int m)
+{
+	int		r;
+	int		rr;
+	t_elem	*tmp;
+
+	tmp = *head_a;
+	while (tmp->value != m)
+		tmp = tmp->next;
+	r = to_head_r(&tmp, head_a);
+	rr = to_head_rr(&tmp, head_a);
+	if (r < rr)
+	{
+		while (r-- > 0)
+			rotate_a(head_a, 1);
+	}
+	else
+	{
+		while (rr-- > 0)
+			rotate_rev_a(head_a, 1);
+	}
+}
 
 void	big_sort(t_store *store, int mode)
 {
@@ -18,13 +41,11 @@ void	big_sort(t_store *store, int mode)
 
 	fill_stack_b(store, mode);
 
-	printf("--------\n");
-	show_stack(&store->a);
-	printf("--------\n");
+	// printf("--------\n");
+	// show_stack(&store->a);
+	// printf("--------\n");
 
 	
-	show_stack(&store->b);
-	printf("--------\n");
 
 	// printf("big sort ----111\n");
 	sort_3(&store->a, mode);
@@ -34,6 +55,8 @@ void	big_sort(t_store *store, int mode)
 	// show_stack(&store->a);
 	// printf("--------\n");
 
+	// show_stack(&store->b);
+	// printf("--------\n");
 
 	while (store->b != 0)
 	{
@@ -41,20 +64,24 @@ void	big_sort(t_store *store, int mode)
 		find_all_scores(&store->a, &store->b);
 		// show_final_score(store->b->next);
 		store->min_score = find_min_score(&store->b);
-		printf("<<<--------\nminscore elem: %d\n------->>>>\n", store->min_score->value);
-		show_route(store->min_score);
-		printf("--------\n");
-		adjust_cmds(store->min_score);
+		// printf("<<<--------\nminscore elem: %d\n------->>>>\n", store->min_score->value);
+		// show_route(store->min_score);
+		// printf("--------\n");
+		// adjust_cmds(store->min_score);
 		// show_route(store->min_score);
 		execute_cmds(store->min_score, &store->a, &store->b, mode);
 		// push_a(&store->a, &store->b, mode);
 	}
-	printf("--------\n");
-	show_stack(&store->a);
-	printf("--------\n");
-	printf("--------\n");
-	show_stack(&store->b);
-	printf("--------\n");
+	final_rotates(&store->a, store->min);
+
+
+
+	// printf("--------\n");
+	// show_stack(&store->a);
+	// printf("--------\n");
+	// printf("--------\n");
+	// show_stack(&store->b);
+	// printf("--------\n");
 }
 
 void	sort_3(t_elem **head, int mode)

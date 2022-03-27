@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:41:51 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/27 16:53:47 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/27 19:54:04 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,8 @@ void		full_free(t_store *store);
 
 void		score_to_zero(t_elem **head_b);
 
+void		final_rotates(t_elem **head_a, int m);
+
+void	show_is_sorted(t_elem **head_a);
 
 #endif
