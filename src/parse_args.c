@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:55:39 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/26 20:41:21 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/27 15:30:02 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	**deep_copy(char **strs, int len)
 	int		i;
 
 	// show_lines(strs, len);
-	new_strs = malloc(sizeof(char*) * len + 1);
+	new_strs = malloc(sizeof(char *) * len + 1);
 	i = 0;
 	new_strs[len] = NULL;
 	while (i < len)
@@ -53,8 +53,8 @@ static char **adjasting_input(int *len, int argc, char **argv)
 	{
 		*len = argc - 1;
 		// show_lines(argv+1, argc-1);
-		// strs = deep_copy(argv + 1, *len);
-		return (argv + 1);
+		strs = deep_copy(argv + 1, *len);
+		return (strs);
 	}
 	else
 	{
@@ -71,8 +71,8 @@ int	parse_args(int argc, char **argv, t_store *store)
 {
 	char		**strs;
 	int	 		len;
-	long int	*arr_un;
-	long int	*arr_sort;
+	int	*arr_un;
+	int	*arr_sort;
 
 	// printf("padaet tut - 1\n");
 	strs = adjasting_input(&len, argc, argv);
@@ -81,7 +81,7 @@ int	parse_args(int argc, char **argv, t_store *store)
 	{
 		ft_putstr_fd("Error (wrong input)\n", 2);
 		if (argc == 2)
-			deep_free(strs);
+			// deep_free(strs);
 		return 0;
 	}
 	// printf("padaet tut - 2\n");
@@ -89,27 +89,30 @@ int	parse_args(int argc, char **argv, t_store *store)
 	arr_un = transform_args(strs, len, argc);
 	// show_array(arr1, len);
 	// printf("padaet tut - 3\n");
-	if (!check_for_doubles(arr_un, len) ||
-		!check_for_max_min_int(arr_un, len))
+	if (!check_for_doubles(arr_un, len) 
+		// || !check_for_max_min_int(arr_un, len)
+		)
 	{
-		free(arr_un);
+		// free(arr_un);
 		ft_putstr_fd("Error\n", 2);
 		return 0;
 	}
 	// printf("padaet tut - 4\n");
 	arr_sort = bubble_sort(arr_un, len);
-
-	show_array(arr_un, len);
-	printf("--------\n");
-	show_array(arr_sort, len);
+	// printf("arr_un:		%p\n", arr_un);
+	// printf("arr_sort:	%p\n", arr_sort);
+	// show_lines(strs, len);
+	// show_array(arr_un, len);
+	// printf("--------\n");
+	// show_array(arr_sort, len);
 	
-	printf("padaet tut - 5\n");
+	// printf("padaet tut - 5\n");
 	*store = fill_store(arr_un, arr_sort, len);
 
-	printf("padaet tut - 6\n");
-	free(arr_un);
-	printf("padaet tut - 7\n");
-	free(arr_sort);
+	// printf("padaet tut - 6\n");
+	// free(arr_un);
+	// printf("padaet tut - 7\n");
+	// free(arr_sort);
 	// printf("successfull parsed \n");
 	return (1);
 	// show_array(arr2, len);

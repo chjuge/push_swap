@@ -6,16 +6,16 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:11:24 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/26 19:06:39 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/27 14:56:41 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-static void	swap(long *a, long *b)
+static void	swap(int *a, int *b)
 {
-	long	tmp1;
-	long	tmp2;
+	int	tmp1;
+	int	tmp2;
 
 	tmp1 = *a;
 	tmp2 = *b;
@@ -23,9 +23,9 @@ static void	swap(long *a, long *b)
 	*a = tmp2;
 }
 
-static long int	*copy_arr(long *arr_old, int len)
+static int	*copy_arr(int *arr_old, int len)
 {
-	long int	*new_arr;
+	int	*new_arr;
 	int			i;
 
 	new_arr = malloc(sizeof(int) * len);
@@ -38,9 +38,9 @@ static long int	*copy_arr(long *arr_old, int len)
 	return (new_arr);
 }
 
-long int	*bubble_sort(long *arr_old, int len)
+int	*bubble_sort(int *arr_old, int len)
 {
-	long int	*arr_new;
+	int	*arr_new;
 	int			i;
 	int 		j;
 

@@ -6,13 +6,13 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 17:00:18 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/26 13:04:40 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/27 14:58:11 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int	check_for_doubles(long *arr, int len)
+int	check_for_doubles(int *arr, int len)
 {
 	int	i;
 	int j;

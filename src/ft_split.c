@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:32:03 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/23 15:32:16 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/27 13:20:52 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,19 @@ static int	find_len(const char *s, char c, int *ind)
 	return (len);
 }
 
-static char	**alloc_err(char **arr)
-{
-	unsigned int	i;
+// static char	**alloc_err(char **arr)
+// {
+// 	unsigned int	i;
 
-	i = 0;
-	while (arr[i])
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-	return (0);
-}
+// 	i = 0;
+// 	while (arr[i])
+// 	{
+// 		free(arr[i]);
+// 		i++;
+// 	}
+// 	free(arr);
+// 	return (0);
+// }
 
 char	**ft_split(char const *s, char c)
 {
@@ -89,9 +89,10 @@ char	**ft_split(char const *s, char c)
 		skip_ch(s, c, &index);
 		new_str_len = find_len(s, c, &index);
 		new_arr[i] = malloc(new_str_len + 1);
-		if (!new_arr[i])
-			return (alloc_err(new_arr));
+		// if (!new_arr[i])
+		// 	return (alloc_err(new_arr));
 		ft_memcpy(new_arr[i], s + index - new_str_len, new_str_len);
+		// ft_memmove(new_arr[i], s + index - new_str_len, new_str_len);
 		new_arr[i][new_str_len] = '\0';
 		i++;
 	}

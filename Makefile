@@ -27,14 +27,16 @@ SRCS	=	$(DIR)/adjust_cmds.c \
 			$(DIR)/sorting.c \
 			$(DIR)/to_head.c \
 			$(DIR)/transform_args.c \
-			$(DIR)/utils1.c
+			$(DIR)/utils1.c \
+			$(DIR)/score_to_zero.c
 
 OBJS	= 	$(SRCS:.c=.o)
 
 HEAD	=	header/push_swap.h
 
 CC		=	gcc
-CFLAGS	=	-Wall -Werror -Wextra 
+CFLAGS	=	-Wall -Werror -Wextra
+#  -fsanitize=address
 # -static-libsan -g
 RM		=	rm -rf
 

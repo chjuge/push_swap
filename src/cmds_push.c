@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 12:42:37 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/26 17:54:27 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/27 12:39:49 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ void push(t_elem **head1, t_elem **head2)
 	add_front(head2, tmp1);
 }
 
-void	push_a(t_elem **a, t_elem **b, int mode)
+void	push_a(t_elem **head_a, t_elem **head_b, int mode)
 {
 	if (mode)
 		ft_putstr_fd("pa\n", 1);
-	push(b, a);
+	push(head_b, head_a);
 }
 
-void	push_b(t_elem **a, t_elem **b, int mode)
+void	push_b(t_elem **head_a, t_elem **head_b, int mode)
 {
 	if (mode)
 		ft_putstr_fd("pb\n", 1);
-	push(a, b);
+	push(head_a, head_b);
 }

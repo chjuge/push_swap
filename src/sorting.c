@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 18:45:19 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/26 19:12:05 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/27 17:06:31 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,46 @@
 void	big_sort(t_store *store, int mode)
 {
 	// printf("big sort\n");
+
 	fill_stack_b(store, mode);
+
+	printf("--------\n");
 	show_stack(&store->a);
 	printf("--------\n");
+
+	
 	show_stack(&store->b);
+	printf("--------\n");
+
 	// printf("big sort ----111\n");
 	sort_3(&store->a, mode);
+
+
+	// printf("--------\n");
+	// show_stack(&store->a);
+	// printf("--------\n");
+
+
+	while (store->b != 0)
+	{
+		score_to_zero(&store->b);
+		find_all_scores(&store->a, &store->b);
+		// show_final_score(store->b->next);
+		store->min_score = find_min_score(&store->b);
+		printf("<<<--------\nminscore elem: %d\n------->>>>\n", store->min_score->value);
+		show_route(store->min_score);
+		printf("--------\n");
+		adjust_cmds(store->min_score);
+		// show_route(store->min_score);
+		execute_cmds(store->min_score, &store->a, &store->b, mode);
+		// push_a(&store->a, &store->b, mode);
+	}
 	printf("--------\n");
 	show_stack(&store->a);
-	// while ((store->b) != 0)
-	// {
-	// 	find_all_scores(store->a, store->b);
-	// 	store->min_score = find_min_score(store->b);
-	// 	adjust_cmds(store->min_score);
-	// 	execute_cmds(store->min_score, store->a, store->b, mode);
-	// 	push_a(store->a, store->b, mode);
-	// }
+	printf("--------\n");
+	printf("--------\n");
+	show_stack(&store->b);
+	printf("--------\n");
 }
 
 void	sort_3(t_elem **head, int mode)

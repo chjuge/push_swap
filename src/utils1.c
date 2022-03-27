@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:45:20 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/26 14:55:33 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/27 13:08:44 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,30 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 		i++;
 	}
 	return ((char *)(dst));
+}
+
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	int	i;
+
+	if (!len || dst == src)
+		return (dst);
+	if (!src && !dst)
+		return (0);
+	if (dst > src && dst - src < (long)len)
+	{
+		i = len;
+		while (--i >= 0)
+			((char *)(dst))[i] = ((char *)(src))[i];
+		return (dst);
+	}
+	if (src > dst && src - dst < (long)len)
+	{
+		i = -1;
+		while (++i < (int)len)
+			((char *)(dst))[i] = ((char *)(src))[i];
+		return (dst);
+	}
+	ft_memcpy(dst, src, len);
+	return (dst);
 }

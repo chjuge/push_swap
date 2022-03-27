@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:41:51 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/26 20:41:30 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/27 16:53:47 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ char		*ft_strdup(const char *str);
 int			ft_isdigit(int c);
 int			ft_strncmp(const char *s1, const char *s2, size_t len);
 void		*ft_memcpy(void *dst, const void *src, size_t n);
+void		*ft_memmove(void *dst, const void *src, size_t len);
 
 int			ft_atoi(const char *str);
 char		**ft_split(char const *s, char c);
@@ -56,19 +57,25 @@ char		**deep_copy(char **strs, int len);
 
 int			check_input(int len, char **arr);
 int			parse_args(int argc, char **argv, t_store *store);
-long int	*transform_args(char **argv, int len, int argc);
-int			check_for_doubles(long *arr, int len);
+int	*transform_args(char **argv, int len, int argc);
+
+int			check_for_doubles(int *arr, int len);
 int			check_for_max_min_int(long *arr, int len);
 int			check_is_sorted(t_elem **head_a, int len);
-long int	*bubble_sort(long *arr_old, int len);
+int	*bubble_sort(int *arr_old, int len);
 
-void		fill_stack_a(t_elem **head_a, long *arr, int len);
-void		show_stack(t_elem **head);
+void		fill_stack_a(t_elem **head_a, int *arr, int len);
 void		deep_free(char **strs);
 int			find_lines_count(char **strs);
+
+
+void		show_stack(t_elem **head);
 void 		show_lines(char **strs, int lines);
 void		show_array(long *arr, int len);
 void		show_elem(t_elem *el);
+void		show_final_score(t_elem *el);
+void		show_route(t_elem *el);
+
 void		add_front(t_elem **list, t_elem *new);
 t_elem		*cut_head(t_elem **head);
 t_elem		*find_appropriate(int value, t_elem **head_a);
@@ -92,11 +99,11 @@ void		swap_a(t_elem **head_a, int mode);
 void		swap_b(t_elem **head_b, int mode);
 void		swap_ss(t_elem **head_a, t_elem **head_b, int mode);
 
-int			get_max(long *arr, int len);
-int			get_min(long *arr);
-int			get_med(long *arr, int len);
+int			get_max(int *arr, int len);
+int			get_min(int *arr);
+int			get_med(int *arr, int len);
 
-t_store		fill_store(long *arr_un, long *arr_sor, int count);
+t_store		fill_store(int *arr_un, int *arr_sor, int count);
 void		fill_stack_b(t_store *store, int mode);
 
 void		find_all_scores(t_elem **head_a, t_elem **head_b);
@@ -108,5 +115,8 @@ void		mini_sort(t_store *store, int mode);
 void		sort_3(t_elem **head, int mode);
 
 void		full_free(t_store *store);
+
+void		score_to_zero(t_elem **head_b);
+
 
 #endif

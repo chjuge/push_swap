@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 14:42:04 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/26 14:53:42 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/27 17:17:57 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	find_final_score(t_elem *elem)
 		return (elem->score_a_rr + elem->score_b_r);
 	if (elem->route == 1)
 	{
-		while (elem->score_a_r > 0 || elem->score_b_r > 0)
+		while (elem->score_a_r > 0 && elem->score_b_r > 0)
 		{
 			(elem->score_a_r)--;
 			(elem->score_b_r)--;
@@ -50,7 +50,7 @@ static int	find_final_score(t_elem *elem)
 		}
 		return (elem->score_a_r + elem->score_b_r + elem->score_ab_r);
 	}
-	while (elem->score_a_rr > 0 || elem->score_b_rr > 0)
+	while (elem->score_a_rr > 0 && elem->score_b_rr > 0)
 	{
 		(elem->score_a_rr)--;
 		(elem->score_b_rr)--;
@@ -81,14 +81,32 @@ void	find_score(t_elem **head_a, t_elem **head_b, t_elem *el)
 	t_elem	*tmp_a;
 
 	tmp_a = find_appropriate(el->value, head_a);
-
 	el->score_a_r = to_head_r(&tmp_a, head_a);
-	el->score_a_rr = to_head_rr(&tmp_a, head_a);
 	el->score_b_r = to_head_r(&el, head_b);
+	el->score_a_rr = to_head_rr(&tmp_a, head_a);
 	el->score_b_rr = to_head_rr(&el, head_b);
 	el->score_ab_r = 0;
 	el->score_ab_rr = 0;
+	printf("value:	%d\n", el->value);
+	printf("appropriate: %d\n", tmp_a->value);
+	printf("a_r:	%d\n", el->score_a_r);
+	printf("b_r:	%d\n", el->score_b_r);
+	printf("a_rr:	%d\n", el->score_a_rr);
+	printf("b_rr:	%d\n", el->score_b_rr);
+	printf("ab_r:	%d\n", el->score_ab_r);
+	printf("ab_rr:	%d\n", el->score_ab_rr);
+	printf("route:	%d\n", el->route);
 	find_optimum(&el);
+	printf("----------------------\n");
+	printf("a_r:	%d\n", el->score_a_r);
+	printf("b_r:	%d\n", el->score_b_r);
+	printf("a_rr:	%d\n", el->score_a_rr);
+	printf("b_rr:	%d\n", el->score_b_rr);
+	printf("ab_r:	%d\n", el->score_ab_r);
+	printf("ab_rr:	%d\n", el->score_ab_rr);
+	printf("route:	%d\n", el->route);
+	printf("----------------------\n");
+	// show_final_score(el);
 }
 
 void	find_all_scores(t_elem **head_a, t_elem **head_b)
