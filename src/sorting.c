@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 18:45:19 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/27 19:59:31 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/27 20:56:46 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,10 +111,38 @@ void	sort_3(t_elem **head, int mode)
 	}
 }
 
+static void	sort_fast(t_store *store, int mode)
+{
+	// printf("count = %d\n", store->count);
+	while (store->count > 3)
+	{
+		push_b(&store->a, &store->b, mode);
+		store->count--;
+	}
+		sort_3(&store->a, mode);
+		while (store->b != 0)
+	{
+		printf("!!!!!!\n");
+		score_to_zero(&store->b);
+		// printf("!!!!!!\n");
+		show_stack(&store->a);
+		printf("!!!!!!\n");
+		show_stack(&store->b);
+		find_all_scores(&store->a, &store->b);
+		printf("!!!!!!\n");
+		store->min_score = find_min_score(&store->b);
+		printf("!!!!!!\n");
+		execute_cmds(store->min_score, &store->a, &store->b, mode);
+	}
+	final_rotates(&store->a, store->min);
+}
+
 void	mini_sort(t_store *store, int mode)
 {
 	if (store->count == 2)
 		swap_a(&store->a, mode);
-	else 
-		sort_3(&store->a, mode);	
+	else if (store->count == 3)
+		sort_3(&store->a, mode);
+	else
+		sort_fast(store, mode);	
 }

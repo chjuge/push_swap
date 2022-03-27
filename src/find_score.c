@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 14:42:04 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/27 19:40:15 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/27 21:02:33 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@ static void	find_route(t_elem *el)
 void	find_score(t_elem **head_a, t_elem **head_b, t_elem *el)
 {
 	t_elem	*tmp_a;
-
 	tmp_a = find_appropriate(el->value, head_a);
 	el->score_a_r = to_head_r(&tmp_a, head_a);
 	el->score_b_r = to_head_r(&el, head_b);

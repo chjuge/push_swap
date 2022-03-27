@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 16:47:55 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/27 14:05:12 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/27 21:03:01 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ t_elem	*find_appropriate(int value, t_elem **head_a)
 
 	tmp = *head_a;
 	while (!(tmp->prev->value < value && value < tmp->value))
-			tmp = tmp->next;
+	{
+		printf("hi!\n");
+		tmp = tmp->next;
+	}
 	return (tmp);
 }

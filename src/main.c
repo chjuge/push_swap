@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:41:54 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/27 19:59:27 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/27 20:44:02 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	// printf("store.count:	%d\n", store.count);
-	if (store.count <= 3)
+	if (store.count <= 5)
 		mini_sort(&store, 1);
 	else
 	{
