@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 18:45:19 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/27 20:56:46 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 11:58:48 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,16 +122,16 @@ static void	sort_fast(t_store *store, int mode)
 		sort_3(&store->a, mode);
 		while (store->b != 0)
 	{
-		printf("!!!!!!\n");
+		// printf("!!!!!!\n");
 		score_to_zero(&store->b);
 		// printf("!!!!!!\n");
-		show_stack(&store->a);
-		printf("!!!!!!\n");
-		show_stack(&store->b);
+		// show_stack(&store->a);
+		// printf("!!!!!!\n");
+		// show_stack(&store->b);
 		find_all_scores(&store->a, &store->b);
-		printf("!!!!!!\n");
+		// printf("!!!!!!\n");
 		store->min_score = find_min_score(&store->b);
-		printf("!!!!!!\n");
+		// printf("!!!!!!\n");
 		execute_cmds(store->min_score, &store->a, &store->b, mode);
 	}
 	final_rotates(&store->a, store->min);
