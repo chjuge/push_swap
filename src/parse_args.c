@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:55:39 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 15:15:50 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 15:20:31 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ static void	error_and_free_arr(int *arr)
 {
 	ft_putstr_fd("Error\n", 2);
 	free(arr);
+}
+
+static void	free_arrays(int *arr1, int *arr2)
+{
+	free(arr1);
+	free(arr2);
 }
 
 int	parse_args(int argc, char **argv, t_store *store)
@@ -46,5 +52,6 @@ int	parse_args(int argc, char **argv, t_store *store)
 	}
 	arr_sort = bubble_sort(arr_un, len);
 	*store = fill_store(arr_un, arr_sort, len);
+	free_arrays(arr_un, arr_sort);
 	return (1);
 }
