@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:41:54 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 12:16:58 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 14:59:13 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 		return (0);
 	if (store.count == 1 || check_is_sorted(&store.a, store.count))
 	{
+		full_free(&store);
 		return (0);
 	}
 	if (store.count <= 5)

@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:55:39 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 14:56:27 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 15:13:37 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static void	error_and_free(char **strs)
 	deep_free(strs);
 }
 
-static void	error_and_free_arr(char **strs, int *arr)
+static void	error_and_free_arr(int *arr)
 {
+	ft_putstr_fd("Error\n", 2);
 	free(arr);
-	error_and_free(strs);
 }
 
 int	parse_args(int argc, char **argv, t_store *store)
@@ -42,10 +42,10 @@ int	parse_args(int argc, char **argv, t_store *store)
 		error_and_free(strs);
 		return (0);
 	}
-	arr_un = transform_args(strs, len, argc);
+	arr_un = transform_args(strs, len);
 	if (!check_for_doubles(arr_un, len))
 	{
-		error_and_free_arr(strs, arr_un);
+		error_and_free_arr(arr_un);
 		return (0);
 	}
 	arr_sort = bubble_sort(arr_un, len);

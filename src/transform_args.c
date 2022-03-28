@@ -6,13 +6,13 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:29:51 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 12:23:21 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 15:10:04 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int	*transform_args(char **strs, int count, int argc)
+int	*transform_args(char **strs, int count)
 {
 	int	*arr;
 	int	i;
@@ -24,6 +24,6 @@ int	*transform_args(char **strs, int count, int argc)
 		arr[i] = ft_atoi(strs[i]);
 		i++;
 	}
-	(void)(argc);
+	deep_free(strs);
 	return (arr);
 }
