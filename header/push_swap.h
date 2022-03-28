@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:41:51 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 13:08:09 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 14:39:15 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int			check_input(int len, char **arr);
 int			parse_args(int argc, char **argv, t_store *store);
 int			*transform_args(char **argv, int len, int argc);
 int			check_for_doubles(int *arr, int len);
-int			check_for_max_min_int(long *arr, int len);
+int			check_for_max_min_int(char **strs, int len);
 int			check_is_sorted(t_elem **head_a, int len);
 int			*bubble_sort(int *arr_old, int len);
 void		fill_stack_a(t_elem **head_a, int *arr, int len);

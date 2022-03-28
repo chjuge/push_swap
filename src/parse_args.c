@@ -6,11 +6,23 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 13:55:39 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 12:58:16 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 14:56:27 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
+
+static void	error_and_free(char **strs)
+{
+	ft_putstr_fd("Error\n", 2);
+	deep_free(strs);
+}
+
+static void	error_and_free_arr(char **strs, int *arr)
+{
+	free(arr);
+	error_and_free(strs);
+}
 
 int	parse_args(int argc, char **argv, t_store *store)
 {
@@ -22,14 +34,18 @@ int	parse_args(int argc, char **argv, t_store *store)
 	strs = adjasting_input(&len, argc, argv);
 	if (!check_input(len, strs))
 	{
-		ft_putstr_fd("Error (wrong input)\n", 2);
-		if (argc == 2)
-			return (0);
+		error_and_free(strs);
+		return (0);
+	}
+	if (!check_for_max_min_int(strs, len))
+	{
+		error_and_free(strs);
+		return (0);
 	}
 	arr_un = transform_args(strs, len, argc);
 	if (!check_for_doubles(arr_un, len))
 	{
-		ft_putstr_fd("Error\n", 2);
+		error_and_free_arr(strs, arr_un);
 		return (0);
 	}
 	arr_sort = bubble_sort(arr_un, len);
