@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:41:54 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 14:59:13 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 15:23:51 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,10 @@ int	main(int argc, char **argv)
 		full_free(&store);
 		return (0);
 	}
-	if (store.count <= 5)
+	if (store.count <= 6)
 		mini_sort(&store, 1);
 	else
-	{
 		big_sort(&store, 1);
-	}
+	full_free(&store);
 	return (0);
 }
