@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   transform_args.c                                   :+:      :+:    :+:   */
+/*   adjasting_input.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 15:29:51 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 12:23:21 by mproveme         ###   ########.fr       */
+/*   Created: 2022/03/28 12:19:37 by mproveme          #+#    #+#             */
+/*   Updated: 2022/03/28 12:19:56 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int	*transform_args(char **strs, int count, int argc)
+char	**adjasting_input(int *len, int argc, char **argv)
 {
-	int	*arr;
-	int	i;
+	char	**strs;
 
-	i = 0;
-	arr = malloc(sizeof(int) * count);
-	while (i < count)
+	if (argc > 2) 
 	{
-		arr[i] = ft_atoi(strs[i]);
-		i++;
+		*len = argc - 1;
+		strs = deep_copy(argv + 1, *len);
+		return (strs);
 	}
-	(void)(argc);
-	return (arr);
+	else
+	{
+		strs = ft_split(argv[1], ' ');
+		*len = find_lines_count(strs);
+	}
+	return (strs);
 }

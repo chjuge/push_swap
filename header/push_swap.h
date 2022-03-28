@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:41:51 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/27 19:54:04 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 12:39:14 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char		*ft_strdup(const char *str);
 int			ft_isdigit(int c);
 int			ft_strncmp(const char *s1, const char *s2, size_t len);
 void		*ft_memcpy(void *dst, const void *src, size_t n);
-void		*ft_memmove(void *dst, const void *src, size_t len);
+int			find_lines_count(char **strs);
 
 int			ft_atoi(const char *str);
 char		**ft_split(char const *s, char c);
@@ -57,24 +57,16 @@ char		**deep_copy(char **strs, int len);
 
 int			check_input(int len, char **arr);
 int			parse_args(int argc, char **argv, t_store *store);
-int	*transform_args(char **argv, int len, int argc);
+int			*transform_args(char **argv, int len, int argc);
 
 int			check_for_doubles(int *arr, int len);
 int			check_for_max_min_int(long *arr, int len);
 int			check_is_sorted(t_elem **head_a, int len);
-int	*bubble_sort(int *arr_old, int len);
+int			*bubble_sort(int *arr_old, int len);
 
 void		fill_stack_a(t_elem **head_a, int *arr, int len);
 void		deep_free(char **strs);
-int			find_lines_count(char **strs);
 
-
-void		show_stack(t_elem **head);
-void 		show_lines(char **strs, int lines);
-void		show_array(long *arr, int len);
-void		show_elem(t_elem *el);
-void		show_final_score(t_elem *el);
-void		show_route(t_elem *el);
 
 void		add_front(t_elem **list, t_elem *new);
 t_elem		*cut_head(t_elem **head);
@@ -120,6 +112,11 @@ void		score_to_zero(t_elem **head_b);
 
 void		final_rotates(t_elem **head_a, int m);
 
-void	show_is_sorted(t_elem **head_a);
+void		show_is_sorted(t_elem **head_a);
+void		sort_fast(t_store *store, int mode);
+t_elem		*ft_lstnew(int value);
+void 		add_back(t_elem **lst, t_elem *new);
+void		add_front(t_elem **head, t_elem *new);
+char		**adjasting_input(int *len, int argc, char **argv);
 
 #endif

@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   transform_args.c                                   :+:      :+:    :+:   */
+/*   final_rotates.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 15:29:51 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 12:23:21 by mproveme         ###   ########.fr       */
+/*   Created: 2022/03/28 12:34:21 by mproveme          #+#    #+#             */
+/*   Updated: 2022/03/28 12:34:59 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int	*transform_args(char **strs, int count, int argc)
+void		final_rotates(t_elem **head_a, int m)
 {
-	int	*arr;
-	int	i;
+	int		r;
+	int		rr;
+	t_elem	*tmp;
 
-	i = 0;
-	arr = malloc(sizeof(int) * count);
-	while (i < count)
+	tmp = *head_a;
+	while (tmp->value != m)
+		tmp = tmp->next;
+	r = to_head_r(&tmp, head_a);
+	rr = to_head_rr(&tmp, head_a);
+	if (r < rr)
 	{
-		arr[i] = ft_atoi(strs[i]);
-		i++;
+		while (r-- > 0)
+			rotate_a(head_a, 1);
 	}
-	(void)(argc);
-	return (arr);
+	else
+	{
+		while (rr-- > 0)
+			rotate_rev_a(head_a, 1);
+	}
 }

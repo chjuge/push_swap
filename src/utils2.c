@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   transform_args.c                                   :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 15:29:51 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 12:23:21 by mproveme         ###   ########.fr       */
+/*   Created: 2022/03/28 12:15:18 by mproveme          #+#    #+#             */
+/*   Updated: 2022/03/28 12:18:40 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int	*transform_args(char **strs, int count, int argc)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	int	*arr;
-	int	i;
+	size_t	i;
 
 	i = 0;
-	arr = malloc(sizeof(int) * count);
-	while (i < count)
+	if (n == 0)
+		return (dst);
+	if (!src && !dst)
+		return (0);
+	while (i < n)
 	{
-		arr[i] = ft_atoi(strs[i]);
+		((char *)(dst))[i] = ((char *)(src))[i];
 		i++;
 	}
-	(void)(argc);
-	return (arr);
+	return ((char *)(dst));
+}
+
+int	find_lines_count(char **strs)
+{
+	int i;
+
+	i = 0;
+	while (strs[i])
+		i++;
+	return (i);
 }

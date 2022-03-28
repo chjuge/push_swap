@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   transform_args.c                                   :+:      :+:    :+:   */
+/*   deep_copy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 15:29:51 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 12:23:21 by mproveme         ###   ########.fr       */
+/*   Created: 2022/03/28 12:20:22 by mproveme          #+#    #+#             */
+/*   Updated: 2022/03/28 12:20:57 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int	*transform_args(char **strs, int count, int argc)
+char	**deep_copy(char **strs, int len)
 {
-	int	*arr;
-	int	i;
+	char	**new_strs;
+	int		i;
 
+	new_strs = malloc(sizeof(char *) * len + 1);
 	i = 0;
-	arr = malloc(sizeof(int) * count);
-	while (i < count)
+	new_strs[len] = NULL;
+	while (i < len)
 	{
-		arr[i] = ft_atoi(strs[i]);
+		new_strs[i] = ft_strdup(strs[i]);
 		i++;
 	}
-	(void)(argc);
-	return (arr);
+
+	return (new_strs);
 }

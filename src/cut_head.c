@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   transform_args.c                                   :+:      :+:    :+:   */
+/*   cut_head.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 15:29:51 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 12:23:21 by mproveme         ###   ########.fr       */
+/*   Created: 2022/03/28 12:25:49 by mproveme          #+#    #+#             */
+/*   Updated: 2022/03/28 12:26:24 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int	*transform_args(char **strs, int count, int argc)
+t_elem	*cut_head(t_elem **head)
 {
-	int	*arr;
-	int	i;
+	t_elem *tmp;
+	t_elem *tmp_prev;
+	t_elem *tmp_next;
 
-	i = 0;
-	arr = malloc(sizeof(int) * count);
-	while (i < count)
+	tmp = *head;
+	tmp_next = tmp->next;
+	tmp_prev = tmp->prev;
+	tmp->next = 0;
+	tmp->prev = 0;
+	if (tmp_next == tmp)
 	{
-		arr[i] = ft_atoi(strs[i]);
-		i++;
+		*head = 0;
+		return (tmp);
 	}
-	(void)(argc);
-	return (arr);
+	tmp_prev->next = tmp_next;
+	tmp_next->prev = tmp_prev;
+	*head = tmp_next;
+	return (tmp);
 }

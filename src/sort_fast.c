@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   transform_args.c                                   :+:      :+:    :+:   */
+/*   sort_fast.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 15:29:51 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 12:23:21 by mproveme         ###   ########.fr       */
+/*   Created: 2022/03/28 12:35:48 by mproveme          #+#    #+#             */
+/*   Updated: 2022/03/28 12:36:02 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int	*transform_args(char **strs, int count, int argc)
+void	sort_fast(t_store *store, int mode)
 {
-	int	*arr;
-	int	i;
-
-	i = 0;
-	arr = malloc(sizeof(int) * count);
-	while (i < count)
+	while (store->count > 3)
 	{
-		arr[i] = ft_atoi(strs[i]);
-		i++;
+		push_b(&store->a, &store->b, mode);
+		store->count--;
 	}
-	(void)(argc);
-	return (arr);
+		sort_3(&store->a, mode);
+		while (store->b != 0)
+	{
+		score_to_zero(&store->b);
+		find_all_scores(&store->a, &store->b);
+		store->min_score = find_min_score(&store->b);
+		execute_cmds(store->min_score, &store->a, &store->b, mode);
+	}
+	final_rotates(&store->a, store->min);
 }

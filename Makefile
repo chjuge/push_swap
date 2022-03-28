@@ -28,7 +28,16 @@ SRCS	=	$(DIR)/adjust_cmds.c \
 			$(DIR)/to_head.c \
 			$(DIR)/transform_args.c \
 			$(DIR)/utils1.c \
-			$(DIR)/score_to_zero.c
+			$(DIR)/utils2.c \
+			$(DIR)/score_to_zero.c \
+			$(DIR)/adjasting_input.c \
+			$(DIR)/deep_copy.c \
+			$(DIR)/cut_head.c \
+			$(DIR)/ft_lstnew.c \
+			$(DIR)/add_front_back.c \
+			$(DIR)/sort_3.c	\
+			$(DIR)/final_rotates.c \
+			$(DIR)/sort_fast.c
 
 OBJS	= 	$(SRCS:.c=.o)
 
@@ -55,5 +64,6 @@ fclean:		clean
 
 re:			fclean all
 
+rec:		re clean
 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean re rec
