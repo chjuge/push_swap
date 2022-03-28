@@ -1,5 +1,7 @@
 DIR		= 	src
 
+MAIN	=	$(DIR)/main.c
+
 SRCS	=	$(DIR)/adjust_cmds.c \
 			$(DIR)/bubble_sort.c \
 			$(DIR)/check_input.c \
@@ -21,7 +23,6 @@ SRCS	=	$(DIR)/adjust_cmds.c \
 			$(DIR)/ft_atoi.c \
 			$(DIR)/ft_split.c \
 			$(DIR)/full_free.c \
-			$(DIR)/main.c \
 			$(DIR)/parse_args.c \
 			$(DIR)/show.c \
 			$(DIR)/sorting.c \
@@ -43,29 +44,42 @@ SRCS	=	$(DIR)/adjust_cmds.c \
 			$(DIR)/adjust_by_route.c \
 			$(DIR)/route_calc.c
 
+BSRCS	=	$(DIR)/checker.c \
+			$(DIR)/read_cmds.c \
+			$(DIR)/get_next_line.c \
+			$(DIR)/get_next_line_utils.c
+
 OBJS	= 	$(SRCS:.c=.o)
+
+OM		=	$(MAIN:.c=.o)
+BOBJS	=	$(BSRCS:.c=.o)
 
 HEAD	=	header/push_swap.h
 
 CC		=	gcc
 CFLAGS	=	-Wall -Werror -Wextra
-#  -fsanitize=address
-# -static-libsan -g
+
 RM		=	rm -rf
 
 NAME	=	push_swap
 
+BNAME	=	checker
+
 all:		$(NAME)
 
-$(NAME):	$(OBJS) $(HEAD)
-			$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+bonus:		$(BNAME)
 
+$(NAME):	$(OBJS) $(OM) $(HEAD)
+			$(CC) $(CFLAGS) $(OBJS) $(OM) -o $(NAME)
+
+$(BNAME):	$(OBJS) $(BOBJS) $(HEAD)
+			$(CC) $(CFLAGS) $(OBJS) $(BOBJS) -o $(BNAME)
 clean:		
-			$(RM) $(OBJS)
+			$(RM) $(OBJS) $(OM) $(BOBJS)
 
 fclean:		clean
-			$(RM) $(NAME)
+			$(RM) $(NAME) $(BNAME)
 
 re:			fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean re bonus

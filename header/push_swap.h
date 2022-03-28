@@ -6,17 +6,24 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:41:51 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 15:10:28 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 17:20:22 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
+
 # include <stdio.h>
+# include <fcntl.h>
 # include <unistd.h>
-# include <string.h>
+# include <sys/types.h>
+# include <sys/uio.h>
 # include <stdlib.h>
+# include <string.h>
 
 typedef struct s_elem {
 	struct s_elem	*next;
@@ -42,6 +49,12 @@ typedef struct s_store {
 	int		min;
 }	t_store;
 
+char		*get_next_line(int fd);
+int			find_end_of_line(char *buf);
+char		*create_new_remainder(char *old_rem, char *buf, int buf_len);
+char		*cut_from_remainder(char **old_rem);
+int			read_file(char **remainder, int fd);
+int			find_len_next_line(char *str);
 void		ft_putstr_fd(char *s, int fd);
 size_t		ft_strlen(const char *s);
 char		*ft_strdup(const char *str);
@@ -103,5 +116,6 @@ char		**adjasting_input(int *len, int argc, char **argv);
 int			route_calc(int a, int b);
 void		find_route(t_elem *el);
 void		adjust_by_route(t_elem *el, int x, int route);
+int			read_cmds(t_store *store);
 
 #endif
