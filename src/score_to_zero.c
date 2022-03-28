@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 16:54:19 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/27 16:57:59 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 12:57:16 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	zero_one(t_elem *el)
 	el->route = 0;
 }
 
-void		score_to_zero(t_elem **head_b)
+void	score_to_zero(t_elem **head_b)
 {
 	t_elem	*tmp;
 

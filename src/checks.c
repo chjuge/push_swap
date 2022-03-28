@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 17:00:18 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/27 14:58:11 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 12:46:32 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	check_for_doubles(int *arr, int len)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	while (i < len)

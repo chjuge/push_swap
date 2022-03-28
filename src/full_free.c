@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 13:08:58 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/26 19:57:10 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 12:58:57 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	delete_elem(t_elem *elem)
 
 void	full_free(t_store *store)
 {
-	t_elem **head_a;
+	t_elem	**head_a;
 	t_elem	*tmp;
 
 	head_a = &store->a;

@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 17:36:52 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 12:11:36 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 12:57:01 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	show_is_sorted(t_elem **head_a)
 		if (tmp->value > tmp->next->value)
 		{
 			flag = 0;
-			break;
+			break ;
 		}
 		tmp = tmp->next;
 	}

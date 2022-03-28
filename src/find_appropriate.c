@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 16:47:55 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 11:59:48 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 12:52:07 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ t_elem	*find_appropriate(int value, t_elem **head_a)
 	len = find_stack_len(head_a);
 	while (!(tmp->prev->value < value && value < tmp->value))
 	{
-		// printf("hi!\n");
 		tmp = tmp->next;
 		len--;
 		if (len == 0)

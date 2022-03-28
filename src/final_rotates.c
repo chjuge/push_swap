@@ -6,13 +6,13 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 12:34:21 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 12:34:59 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 12:51:53 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-void		final_rotates(t_elem **head_a, int m)
+void	final_rotates(t_elem **head_a, int m)
 {
 	int		r;
 	int		rr;

@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 12:15:18 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 12:18:40 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 12:55:37 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 
 int	find_lines_count(char **strs)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (strs[i])

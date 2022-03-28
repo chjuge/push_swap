@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 14:16:18 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 12:29:34 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 12:49:32 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	fill_stack_a(t_elem **head_a, int *arr, int len)
 {
-	int	i;
+	int		i;
 	t_elem	*tmp;
 	t_elem	*h;
 
@@ -32,4 +32,3 @@ void	fill_stack_a(t_elem **head_a, int *arr, int len)
 		i++;
 	}
 }
-

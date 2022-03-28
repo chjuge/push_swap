@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 18:45:19 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 12:36:06 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 12:56:18 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ void	mini_sort(t_store *store, int mode)
 	else if (store->count == 3)
 		sort_3(&store->a, mode);
 	else
-		sort_fast(store, mode);	
+		sort_fast(store, mode);
 }

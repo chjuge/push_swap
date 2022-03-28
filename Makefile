@@ -37,7 +37,11 @@ SRCS	=	$(DIR)/adjust_cmds.c \
 			$(DIR)/add_front_back.c \
 			$(DIR)/sort_3.c	\
 			$(DIR)/final_rotates.c \
-			$(DIR)/sort_fast.c
+			$(DIR)/sort_fast.c \
+			$(DIR)/find_all_scores.c \
+			$(DIR)/find_route.c \
+			$(DIR)/adjust_by_route.c \
+			$(DIR)/route_calc.c
 
 OBJS	= 	$(SRCS:.c=.o)
 
@@ -64,6 +68,4 @@ fclean:		clean
 
 re:			fclean all
 
-rec:		re clean
-
-.PHONY:		all clean fclean re rec
+.PHONY:		all clean fclean re

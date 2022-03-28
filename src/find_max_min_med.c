@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 18:15:35 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/27 14:59:05 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 12:52:30 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int	get_med(int *arr, int len)
 {
 	int	x;
 
-	x = len/2;
+	x = len / 2;
 	return (arr[x]);
 }

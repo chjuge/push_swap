@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 15:11:24 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 12:30:35 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 12:45:59 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,17 @@ int	*bubble_sort(int *arr_old, int len)
 {
 	int	*arr_new;
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	arr_new = copy_arr(arr_old, len);
-
 	while (i < len - 1)
 	{
 		j = 0;
 		while (j < len - i - 1)
 		{
-			if (arr_new[j] > arr_new[j+1])
-				swap(&arr_new[j], &arr_new[j+1]);
+			if (arr_new[j] > arr_new[j + 1])
+				swap(&arr_new[j], &arr_new[j + 1]);
 			j++;
 		}
 		i++;

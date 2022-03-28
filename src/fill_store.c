@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 18:11:44 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 12:24:06 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 12:51:38 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_store	fill_store(int *arr_un, int *arr_sor, int count)
 {
-	t_store store;
+	t_store	store;
 
 	store.a = 0;
 	store.b = 0;

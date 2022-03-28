@@ -6,13 +6,13 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 12:29:19 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 12:29:39 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 12:45:03 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-void add_back(t_elem **lst, t_elem *new)
+void	add_back(t_elem **lst, t_elem *new)
 {
 	t_elem	*tmp;
 
@@ -34,8 +34,8 @@ void add_back(t_elem **lst, t_elem *new)
 
 void	add_front(t_elem **head, t_elem *new)
 {
-	t_elem *tmp;
-	t_elem *tmp_prev;
+	t_elem	*tmp;
+	t_elem	*tmp_prev;
 
 	if (!(*head))
 	{

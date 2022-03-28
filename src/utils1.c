@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:45:20 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 12:15:25 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 12:55:47 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,3 @@ int	ft_strncmp(const char *s1, const char *s2, size_t len)
 	}
 	return (0);
 }
-

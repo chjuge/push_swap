@@ -6,7 +6,7 @@
 /*   By: mproveme <mproveme@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 12:35:48 by mproveme          #+#    #+#             */
-/*   Updated: 2022/03/28 12:36:02 by mproveme         ###   ########.fr       */
+/*   Updated: 2022/03/28 12:56:34 by mproveme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	sort_fast(t_store *store, int mode)
 		push_b(&store->a, &store->b, mode);
 		store->count--;
 	}
-		sort_3(&store->a, mode);
-		while (store->b != 0)
+	sort_3(&store->a, mode);
+	while (store->b != 0)
 	{
 		score_to_zero(&store->b);
 		find_all_scores(&store->a, &store->b);
